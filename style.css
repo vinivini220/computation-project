@@ -1,0 +1,16 @@
+  :root {
+            --color-main: #EC1313;
+        }
+
+        .text-main { color: var(--color-main); }
+        .bg-main { background-color: var(--color-main); }
+        .border-main { border-color: var(--color-main); }
+        .hover\:text-main:hover { color: var(--color-main); }
+        .active-link { color: var(--color-main) !important; }
+        
+        /* Custom styles for Hero Section */
+        #hero .section-overlay {
+            padding-top: 10rem; /* Increased padding top */
+            padding-bottom: 10rem; /* Increased padding bottom */
+        }
+        

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COMPUTATIONAL</title>
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Animations are defined in script.js or style.css in the original structure. */
+    </style>
+</head>
+
+<body class="bg-gray-50 font-['Inter',_sans-serif]">
+    <header class="fixed top-0 left-0 right-0 z-[1000] bg-white border-b border-gray-200 shadow-sm">
+        <!-- Top quick links -->
+        <nav class="bg-main shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center gap-6 h-8">
+                <a href="#" class="font-medium text-sm text-white transition">Randomisation System</a>
+                <a href="#" class="font-medium text-sm text-white transition">IMP Management System</a>
+            </div>
+        </nav>
+
+        <!-- Main navbar -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-3">
+                    <img src="https://computational-seven.vercel.app/assets/image-DxBXbhCF.png" alt="Logo"
+                        class="w-auto h-8 object-contain">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-main animate-pulse" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                    </svg>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#hero" class="text-gray-800 text-sm font-semibold hover:text-main transition">Home</a>
+                    <a href="#background"
+                        class="text-gray-800 text-sm font-semibold hover:text-main transition">Background</a>
+                    <a href="#contact-details"
+                        class="text-gray-800 text-sm font-semibold hover:text-main transition">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-toggle" class="md:hidden p-2 rounded text-gray-800 hover:bg-gray-100 transition">
+                    <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu"
+                class="hidden md:hidden bg-white border-t border-gray-200 transition-all duration-300 ease-in-out">
+                <div class="px-4 py-3 space-y-2">
+                    <a href="#hero"
+                        class="block w-full text-left px-3 py-2 text-base font-medium text-gray-800 hover:bg-red-50 hover:text-main transition">Home</a>
+                    <a href="#background"
+                        class="block w-full text-left px-3 py-2 text-base font-medium text-gray-800 hover:bg-red-50 hover:text-main transition">Background</a>
+                    <a href="#contact-details"
+                        class="block w-full text-left px-3 py-2 text-base font-medium text-gray-800 hover:bg-red-50 hover:text-main transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="max-h-screen pt-[30px]">
+        <!-- hero-section -->
+        <section id="hero" class="relative min-h-screen">
+            <!-- Background Image -->
+            <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url(assets/Baground.png);">
+            </div>
+            <div class="absolute inset-0 bg-black/40 z-1000"></div> <!-- Overlay -->
+
+            <!-- Hero Content -->
+            <div
+                class="relative z-10 flex flex-col items-center justify-center text-center min-h-screen px-4 py-32 sm:py-36 md:py-48">
+                <!-- Icons -->
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-red-600" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                    </svg>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-red-600">
+                    COMPUTATIONAL
+                </h1>
+
+                <!-- Subheading -->
+                <div class="max-w-4xl mx-auto mb-10 px-2 sm:px-4">
+                    <h2 class="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-normal text-gray-100">
+                        A primary care-based cluster randomised trial of personalised renal function
+                        monitoring and interventions in people living with heart failure
+                    </h2>
+                </div>
+
+                <!-- Info Boxes -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto text-sm">
+                    <div class="p-4 bg-black/40 rounded-md border-2 border-red-600">
+                        <div class="text-lg font-semibold mb-1  text-gray-100">Funder</div>
+                        <div class="text-gray-100 text-sm text-red-200 sm:text-base">NIHR Programme Grants for Applied
+                            Research (PGfAR)</div>
+                    </div>
+                    <div class="p-4 bg-black/40 rounded-md border-2 border-red-600">
+                        <div class="text-lg font-semibold mb-1 text-gray-100">Sponsor</div>
+                        <div class="text-gray-100 text-sm text-red-200 sm:text-base">University of Liverpool</div>
+                    </div>
+                    <div class="p-4 bg-black/40 rounded-md border-2 border-red-600">
+                        <div class="text-lg font-semibold mb-1 text-gray-100">Duration</div>
+                        <div class="text-gray-100 text-sm sm:text-base text-red-200">18 Months</div>
+                    </div>
+                    <div class="p-4 bg-black/40 rounded-md border-2 border-red-600">
+                        <div class="text-lg font-semibold mb-1 text-gray-100">Trial Center</div>
+                        <div class="text-gray-100 text-sm sm:text-base text-red-200">Liverpool Clinical Trials Centre
+                            (LCTC)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- overview-section -->
+        <section id="overview" class="bg-gradient-to-b  py-16 md:py-24">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        Overview
+                    </h2>
+                    <p class="text-lg text-gray-600">
+                        Key statistics for the COMPUTATIONAL clinical trial
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="info-card text-center group bg-white p-8 rounded-xl shadow-lg transition duration-300 transform fade-in-up"
+                        style="animation-delay: 0s">
+                        <div class="flex justify-center mb-4">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center transition"
+                                style="background-color: var(--color-main)1A;"> <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="w-8 h-8 text-main" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 12h-5v5h5" />
+                                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                                    <path d="M12 7v5l2.5 2.5" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="text-3xl font-bold mb-2 text-main">200</div>
+                        <div class="text-lg font-semibold text-gray-900 mb-2">GP Practices</div>
+                        <p class="text-sm text-gray-600 leading-relaxed">Across England using OPTUM (EMIS) system</p>
+                    </div>
+
+                    <div class="info-card text-center group bg-white p-8 rounded-xl shadow-lg transition duration-300 transform fade-in-up"
+                        style="animation-delay: 0.2s">
+                        <div class="flex justify-center mb-4">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center transition"
+                                style="background-color: var(--color-main)1A;">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-main" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="text-3xl font-bold mb-2 text-main">20,000</div>
+                        <div class="text-lg font-semibold text-gray-900 mb-2">Estimated Patients</div>
+                        <p class="text-sm text-gray-600 leading-relaxed">People living with heart failure</p>
+                    </div>
+
+                    <div class="info-card text-center group bg-white p-8 rounded-xl shadow-lg transition duration-300 transform fade-in-up"
+                        style="animation-delay: 0.4s">
+                        <div class="flex justify-center mb-4">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center transition"
+                                style="background-color: var(--color-main)1A;">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-main" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                                    <line x1="16" x2="16" y1="2" y2="6" />
+                                    <line x1="8" x2="8" y1="2" y2="6" />
+                                    <line x1="3" x2="21" y1="10" y2="10" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="text-3xl font-bold mb-2 text-main">18 months</div>
+                        <div class="text-lg font-semibold text-gray-900 mb-2">Study Follow-Up</div>
+                        <p class="text-sm text-gray-600 leading-relaxed">In line with NICE guidelines</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- background-section -->
+        <section id="background" class="relative py-16 md:py-24 overflow-hidden bg-white">
+            <div class="section-background absolute inset-0 bg-cover bg-center opacity-10"></div>
+            <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-up">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-l-4 pl-4 border-main">
+                            Background
+                        </h2>
+
+                        <div class="text-lg text-gray-600 leading-relaxed space-y-4">
+                            <p>
+                                Almost one million people in the UK live with heart failure, with almost 50%
+                                also experiencing kidney (renal) problems. The heart and kidneys are closely
+                                interconnected: if the heart suddenly becomes less efficient, renal function
+                                can worsen.
+                            </p>
+
+                            <p>
+                                Modern treatments enable people with heart failure to live longer, healthier lives,
+                                but their medications must be carefully monitored. Too low a dose of heart medicine
+                                can worsen heart failure symptoms, while higher doses may impair renal function.
+                            </p>
+
+                            <p class="font-semibold text-main">
+                                Both situations can increase the risk of hospital admission.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center lg:justify-end fade-in-up">
+                        <div class="w-full max-w-md">
+                            <div class="rounded-2xl p-8 shadow-xl"
+                                style="background-color: var(--color-main)1A; border: 1px solid var(--color-main)33;">
+                                <div class="text-center">
+                                    <div class="text-4xl font-bold mb-2 text-main">1M+</div>
+                                    <div class="text-sm text-gray-600 mb-6">UK residents with heart failure</div>
+
+                                    <div class="text-3xl font-bold text-gray-800 mb-2">50%</div>
+                                    <div class="text-sm text-gray-600">Also experience kidney problems</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- trial-summary -->
+        <section id="trial-summary" class="relative py-20 bg-gray-100 overflow-hidden">
+            <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                        Trial Summary
+                    </h2>
+                    <div class="max-w-4xl mx-auto text-lg text-gray-600 leading-relaxed space-y-4">
+                        <p>
+                            The COMPUTATIONAL will explore the clinical and cost-effectiveness of a
+                            personalised renal function monitoring algorithm, designed to prevent hospital
+                            admissions due to renal impairment without worsening heart failure outcomes.
+                        </p>
+                        <p>
+                            The algorithm, classed as a medical device, consists of a prediction model designed
+                            to tailor monitoring schedules, together with a decision tool that provides guidance
+                            on immediate interventions and recommendations for the primary care team.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid gap-8 md:grid-cols-3 lg:grid-cols-3">
+                    <div
+                        class="bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-gray-300 shadow-lg transition-all duration-300 fade-in-up">
+                        <div class="w-14 h-14 mx-auto mb-5 rounded-xl flex items-center justify-center"
+                            style="background-color: var(--color-main)1A;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-main" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">
+                            Large Scale Study
+                        </h3>
+                        <p class="text-base text-gray-600 leading-relaxed text-center">
+                            200 GP practices across England evaluating around 20,000 patients
+                        </p>
+                    </div>
+
+                    <div class="bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-gray-300 shadow-lg transition-all duration-300 fade-in-up"
+                        style="animation-delay: 0.2s">
+                        <div class="w-14 h-14 mx-auto mb-5 rounded-xl flex items-center justify-center"
+                            style="background-color: var(--color-main)1A;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-main" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">
+                            Randomised
+                        </h3>
+                        <p class="text-base text-gray-600 leading-relaxed text-center">
+                            100 centres using prediction model vs. 100 centres with standard care
+                        </p>
+                    </div>
+
+                    <div class="bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-gray-300 shadow-lg transition-all duration-300 fade-in-up"
+                        style="animation-delay: 0.4s">
+                        <div class="w-14 h-14 mx-auto mb-5 rounded-xl flex items-center justify-center"
+                            style="background-color: var(--color-main)1A;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-main" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">
+                            Comprehensive Monitoring
+                        </h3>
+                        <p class="text-base text-gray-600 leading-relaxed text-center">
+                            18-month period with PROMs collected at baseline, 6 and 18 months
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center fade-in-up">
+                    <div class="max-w-3xl mx-auto backdrop-blur-sm rounded-2xl p-8 shadow-lg"
+                        style="background-color: var(--color-main)1A; border: 1px solid var(--color-main)33;">
+                        <p class="text-base md:text-lg text-gray-700">
+                            <span class="font-bold text-main">Study Design:</span> We will recruit 200 GP
+                            practices
+                            across England that use the OPTUM (EMIS) system, evaluating around 20,000 patients.
+                            The trial will run for 18 months, in line with National Institute for Health and Care
+                            Excellence (NICE) guidelines and current standards of care.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- objactive -->
+        <section id="objectives" class="bg-white py-16 md:py-24">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                        Objectives
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Our comprehensive research framework designed to evaluate the effectiveness
+                        and implementation of personalised renal function monitoring
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="p-6 bg-gray-50 rounded-xl shadow-lg border transition fade-in-up"
+                        style="border-color: var(--color-main)33;">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center text-main"
+                                style="background-color: var(--color-main)1A; border: 1px solid var(--color-main)33;">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Primary Objective</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex gap-3">
+                                <div class="w-2 h-2 rounded-full flex-shrink-0 mt-2 bg-main"></div>
+                                <p class="text-gray-600 leading-relaxed">
+                                    To compare the clinical effectiveness of personalised renal function monitoring with
+                                    standard care in patients living with heart failure
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-gray-50 rounded-xl shadow-lg border transition fade-in-up"
+                        style="animation-delay: 0.2s; border-color: var(--color-main)33;">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center text-main"
+                                style="background-color: var(--color-main)1A; border: 1px solid var(--color-main)33;">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <circle cx="12" cy="12" r="6" />
+                                    <circle cx="12" cy="12" r="2" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Secondary Objectives</h3>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex gap-3">
+                                <div class="w-2 h-2 rounded-full flex-shrink-0 mt-2 bg-main"></div>
+                                <p class="text-gray-600 leading-relaxed">
+                                    To determine if implementation of personalised renal function monitoring in patients
+                                    living with heart failure improves a variety of clinical outcomes, when compared
+                                    with standard care
+                                </p>
+                            </div>
+                            <div class="flex gap-3">
+                                <div class="w-2 h-2 rounded-full flex-shrink-0 mt-2 bg-main"></div>
+                                <p class="text-gray-600 leading-relaxed">
+                                    To identify barriers in the optimal use of personalised renal function monitoring
+                                    for both the primary care team and patients
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-gray-50 rounded-xl shadow-lg border transition fade-in-up"
+                        style="animation-delay: 0.4s; border-color: var(--color-main)33;">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center text-main"
+                                style="background-color: var(--color-main)1A; border: 1px solid var(--color-main)33;">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                                    <polyline points="18 7 22 7 22 11" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Economic Objective</h3>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex gap-3">
+                                <div class="w-2 h-2 rounded-full flex-shrink-0 mt-2 bg-main"></div>
+                                <p class="text-gray-600 leading-relaxed">
+                                    To estimate the cost-effectiveness of personalised renal function monitoring in
+                                    comparison to standard care
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center fade-in-up" style="animation-delay: 0.6s">
+                    <div class="inline-flex items-center gap-2 rounded-full px-6 py-3 border"
+                        style="background-color: var(--color-main)1A; border: 1px solid var(--color-main)33;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-main" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <line x1="12" x2="12" y1="2" y2="22" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                        <span class="text-sm font-medium text-gray-900">
+                            Funded by NIHR Programme Grants for Applied Research (PGfAR)
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- resources -->
+        <section id="resources" class="relative py-16 md:py-24 overflow-hidden bg-gray-50">
+            <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                        Resources for GP Practices
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Comprehensive training materials and support documentation available to participating healthcare
+                        providers
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 fade-in-up border-main">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-main" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m22 7-8.973 5.41a3 3 0 0 0 0 5.18L22 23" />
+                                <path
+                                    d="M7.74 18.23a2 2 0 0 0-1.58-.26L2 19V7l4.16.89a2 2 0 0 0 1.58-.26l8.973-5.41a3 3 0 0 1 0-5.18L22 1V19" />
+                            </svg>
+                            <h3 class="text-xl font-semibold text-gray-900">Training Videos</h3>
+                        </div>
+                        <p class="text-gray-600">Comprehensive video guides for implementing the monitoring algorithm
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 fade-in-up" style="animation-delay: 0.2s;"
+                        border-main>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-main" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" x2="8" y1="13" y2="13" />
+                                <line x1="16" x2="8" y1="17" y2="17" />
+                                <line x1="10" x2="8" y1="9" y2="9" />
+                            </svg>
+                            <h3 class="text-xl font-semibold text-gray-900">Documentation</h3>
+                        </div>
+                        <p class="text-gray-600">Detailed protocols and implementation guides for GP practices</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 fade-in-up" style="animation-delay: 0.4s;"
+                        border-main>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-main" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M12 2a10 10 0 0 0-9.26 13.84c.32.74.49 1.52.49 2.32 0 1.28-.27 2.5-.78 3.54a.6.6 0 0 0 .91.68c.95-.82 2.22-1.35 3.58-1.57.8-.13 1.6-.2 2.41-.2s1.61.07 2.41.2c1.36.22 2.63.75 3.58 1.57a.6.6 0 0 0 .91-.68c-.51-1.04-.78-2.26-.78-3.54 0-.8.17-1.58.49-2.32A10 10 0 0 0 12 2Z" />
+                                <path d="M12 2v4" />
+                            </svg>
+                            <h3 class="text-xl font-semibold text-gray-900">Support Team</h3>
+                        </div>
+                        <p class="text-gray-600">Dedicated support staff available for questions and guidance</p>
+                    </div>
+                </div>
+
+                <div class="text-center fade-in-up" style="animation-delay: 0.6s">
+                    <p class="mb-4 text-gray-700 max-w-xl mx-auto">
+                        Training videos and documentation are available to participating GP practices through our secure
+                        portal with credential-based access.
+                    </p>
+                    <a href="#"
+                        class="inline-block px-8 py-3 text-white font-semibold rounded-lg shadow-lg transition duration-300 bg-main hover:opacity-90">
+                        Request Access Credentials
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map: GP practices participating -->
+        <section id="map" class="py-16 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Map</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto mt-2">
+                        GP practices participating in the COMPUTATIONAL study across England.
+                    </p>
+                </div>
+
+                <!-- Map container -->
+                <div class="map-wrap max-w-5xl mx-auto relative">
+                    <!-- Replace the src with your map image (e.g. assets/map-england.png) -->
+                    <img id="map-image" src="assets/activate-map.png"
+                        alt="Map showing GP practices participating across England"
+                        class="w-full h-auto rounded-lg shadow-md object-cover cursor-zoom-in" loading="lazy">
+
+                    <!-- Optional caption -->
+                    <div class="mt-3 text-sm text-gray-500 text-center">
+                        Click the map to view fullscreen. Replace this image with your final map file when ready.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox modal (place near end of body) -->
+        <div id="img-modal" class="fixed inset-0 z-[99999] hidden items-center justify-center bg-black/80 p-4">
+            <button id="img-modal-close" class="absolute top-6 right-6 text-white text-2xl leading-none">✕</button>
+            <img id="img-modal-img" src="" alt="" class="max-w-full max-h-full rounded-md shadow-xl" />
+        </div>
+
+        <!-- collaborators -->
+        <section id="collaborators" class="py-16 md:py-24 bg-gray-50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                        Our Collaborators
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Working together with leading institutions to advance heart failure care through innovative
+                        renal function monitoring
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-5 md:gap-8">
+                    <div
+                        class="collab-card text-center p-6 bg-white rounded-xl shadow-lg border-t-4 border-main transition duration-300 ease-in-out transform hover:shadow-xl hover:scale-[1.02] fade-in-up">
+                        <img src="assets/univerliver.png" alt="University of Liverpool Logo"
+                            class="w-20 h-20 sm:w-24 sm:h-24 mx-auto object-contain mb-4">
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">University of Liverpool</h3>
+                        <p class="text-sm font-semibold text-main mt-2">Lead Institution & Sponsor</p>
+                        <p class="text-xs text-gray-500 mt-1">Primary research institution leading the COMPUTATIONAL
+                            study</p>
+                    </div>
+
+                    <div class="collab-card text-center p-6 bg-white rounded-xl shadow-lg border-t-4 border-main transition duration-300 ease-in-out transform hover:shadow-xl hover:scale-[1.02] fade-in-up"
+                        style="animation-delay: 0.1s;">
+                        <img src="assets/liver.png" alt="LCTC Logo"
+                            class="w-20 h-20 sm:w-24 sm:h-24 mx-auto object-contain mb-4">
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">LCTC</h3>
+                        <p class="text-sm font-semibold text-main mt-2">Clinical Management</p>
+                        <p class="text-xs text-gray-500 mt-1">Clinical coordination and data management</p>
+                    </div>
+
+                    <div class="collab-card text-center p-6 bg-white rounded-xl shadow-lg border-t-4 border-main transition duration-300 ease-in-out transform hover:shadow-xl hover:scale-[1.02] fade-in-up"
+                        style="animation-delay: 0.2s;">
+                        <img src="assets/nihr.jpeg" alt="NIHR Logo"
+                            class="w-20 h-20 sm:w-24 sm:h-24 mx-auto object-contain mb-4">
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">NIHR</h3>
+                        <p class="text-sm font-semibold text-main mt-2">Funding Body</p>
+                        <p class="text-xs text-gray-500 mt-1">National Institute for Health and Care Research funding
+                        </p>
+                    </div>
+
+                    <div class="collab-card text-center p-6 bg-white rounded-xl shadow-lg border-t-4 border-main transition duration-300 ease-in-out transform hover:shadow-xl hover:scale-[1.02] fade-in-up"
+                        style="animation-delay: 0.3s;">
+                        <img src="assets/bangor.jpg" alt="Bangor University Logo"
+                            class="w-20 h-20 sm:w-24 sm:h-24 mx-auto object-contain mb-4">
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Bangor University</h3>
+                        <p class="text-sm font-semibold text-main mt-2">Research Partner</p>
+                        <p class="text-xs text-gray-500 mt-1">Collaborative research and academic support</p>
+                    </div>
+
+                    <div class="collab-card text-center p-6 bg-white rounded-xl shadow-lg border-t-4 border-main transition duration-300 ease-in-out transform hover:shadow-xl hover:scale-[1.02] fade-in-up"
+                        style="animation-delay: 0.4s;">
+                        <img src="assets/optum.png" alt="Optum Logo"
+                            class="w-20 h-20 sm:w-24 sm:h-24 mx-auto object-contain mb-4">
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Optum</h3>
+                        <p class="text-sm font-semibold text-main mt-2">Technology Partner</p>
+                        <p class="text-xs text-gray-500 mt-1">Electronic health record system (EMIS)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- contact-details -->
+        <section id="contact-details" class="bg-gray-100 py-12 md:py-24">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Contact Us
+                </h2>
+                <p class="text-base md:text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+                    Get in touch with the COMPUTATIONAL team for questions about participation, research findings, or
+                    general inquiries.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
+                    <!-- Email -->
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-lg border-t-4 border-main">
+                        <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-3">Email</h3>
+                        <div class="flex items-center space-x-2 md:space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6 text-main" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <a href="mailto:computational@liverpool.ac.uk"
+                                class="text-gray-600 hover:text-main transition text-sm md:text-base">
+                                computational@liverpool.ac.uk
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-lg border-t-4 border-main">
+                        <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-3">Phone</h3>
+                        <div class="flex items-center space-x-2 md:space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6 text-main" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2 2A20 20 0 0 1 2 4a2 2 0 0 1 2-2h3l1.83 2.17a2 2 0 0 1 0 2.83l-1.34 1.34a16.89 16.89 0 0 0 9.87 9.87l1.34-1.34a2 2 0 0 1 2.83 0L20 15.09z" />
+                            </svg>
+                            <span class="text-gray-600 text-sm md:text-base">+44 (0) 151 794 5588</span>
+                        </div>
+                    </div>
+
+                    <!-- Address & Office Hours -->
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-lg border-t-4 border-main md:col-span-2">
+                        <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-4">Address & Office Hours</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-2 md:space-x-3">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="w-5 h-5 md:w-6 md:h-6 text-main flex-shrink-0 mt-1" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                                <address class="text-gray-600 not-italic text-sm md:text-base">
+                                    University of Liverpool, Liverpool Clinical Centre, Liverpool, L69 3GL
+                                </address>
+                            </div>
+                            <div class="flex items-start space-x-2 md:space-x-3">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="w-5 h-5 md:w-6 md:h-6 text-main flex-shrink-0 mt-1" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                <p class="text-gray-600 text-sm md:text-base">
+                                    <strong>Office Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM GMT
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-red-800 text-white/100 py-8 flex flex-col md:flex-row">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8  justify-center-center">
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-white-400">
+                    <p>&copy; <span id="current-year">2025</span> Computational Study. All rights reserved.</p>
+                </div>
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-white-400">
+
+                    <p class="mt-2 md:mt-0 text-xs text-white-400">Designed by University of Liverpool</p>
+
+                </div>
+        </footer>
+    </main>
+
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+</body>
+
+</html>
