@@ -83,3 +83,24 @@ document.querySelectorAll('nav a[href^="#"], #mobile-menu a[href^="#"], .hero-co
     });
 });
 
+// Cookies banner logic
+const cookiesBanner = document.getElementById('cookies-banner');
+const acceptBtn = document.getElementById('accept-cookies');
+const rejectBtn = document.getElementById('reject-cookies');
+
+// Check if user already made a choice
+if (localStorage.getItem('cookiesChoice')) {
+  cookiesBanner.classList.add('hidden');
+}
+
+// Accept button
+acceptBtn.addEventListener('click', () => {
+  localStorage.setItem('cookiesChoice', 'accepted');
+  cookiesBanner.classList.add('hidden');
+});
+
+// Reject button
+rejectBtn.addEventListener('click', () => {
+  localStorage.setItem('cookiesChoice', 'rejected');
+  cookiesBanner.classList.add('hidden');
+});
